@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-export function Input({icon : Icon, label, id, placeholder, icon, ...rest}){
+export function Input({icon : Icon, label, id, placeholder, icon, containerClass, ...rest}){
     return(
-        <Container className="input" Icon={Icon}>
+        <Container className={containerClass} Icon={Icon}>
             {label && <label htmlFor={id}>{label}</label>}
             <div>
                 {

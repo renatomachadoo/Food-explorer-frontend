@@ -3,12 +3,13 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
     width: 100%;
+    max-height: 7.125rem;
     background: ${ ({ theme}) => theme.COLORS.DARK_600};
 
     display: grid;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     grid-template-columns: auto 1fr auto;
     grid-template-areas: 
         "logo search button logout"
@@ -73,7 +74,7 @@ export const Container = styled.div`
         }
     }
 
-    #menu-mobile{
+    .menu-mobile{
         color: ${ ({ theme }) => theme.COLORS.LIGHT_100};
         cursor: pointer;
         grid-area: menu;
@@ -110,5 +111,11 @@ export const Container = styled.div`
             right: -2px;
             top: -2px;
         }
+    }
+
+    #menu-mobile-text{
+        font-size: 1.3125rem;
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
     }
 `
