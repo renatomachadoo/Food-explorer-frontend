@@ -24,7 +24,7 @@ export const Container = styled.div`
         .main {
             margin: 0 auto;
             width: 100%;
-            max-width: 80rem;
+            max-width: ${( {theme}) => theme.LIMITS.MAX_PAGE_WIDTH};
 
             gap: 0.75rem;
             padding: 10.25rem 7.75rem 3rem;

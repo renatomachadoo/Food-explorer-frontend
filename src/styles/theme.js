@@ -33,9 +33,14 @@ export default {
 
        
     },
+
     GRADIENTS: {
         GRADIENT_100_TO_L: "linear-gradient(to left, rgba(0, 10, 15, 0), #000A0F)",
         GRADIENT_100_TO_R: "linear-gradient(to right, rgba(0, 10, 15, 0), #000A0F)",
         GRADIENT_200: "linear-gradient(to right, #091E26, #00131C)"
+    },
+    
+    LIMITS: {
+        MAX_PAGE_WIDTH: "80rem",
     }
 }

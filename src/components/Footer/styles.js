@@ -8,7 +8,7 @@ export const Container = styled.div`
     > div {
         height: 4.8125rem;
         width: 100%;
-        max-width: 80rem;
+        max-width: ${({ theme}) => theme.LIMITS.MAX_PAGE_WIDTH};
 
         margin: 0 auto;
 

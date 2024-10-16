@@ -10,7 +10,7 @@ export const Container = styled.header`
 
     > div {
         width: 100%;
-        max-width: 80rem;
+        max-width: ${({ theme}) => theme.LIMITS.MAX_PAGE_WIDTH};
         
         margin: 0 auto;
 
