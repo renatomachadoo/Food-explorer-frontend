@@ -1,8 +1,8 @@
 import { Container } from "./styles";
 
-export function Button({icon : Icon, text, ...rest}){
+export function Button({icon : Icon, text, disabled = false, ...rest}){
     return (
-        <Container {...rest}>
+        <Container disabled={disabled.toString()} {...rest}>
             {
                 Icon && <Icon size={32} />
             }

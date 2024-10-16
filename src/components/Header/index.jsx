@@ -27,7 +27,7 @@ export function Header(){
                             <h2>food explorer</h2>
                         </div>
                         <Input containerClass="input" icon={CiSearch} placeholder="Busque por pratos ou ingredientes"/>
-                        <Button icon={PiReceipt} text="Pedidos (0)"/>
+                        <Button icon={PiReceipt} text="Pedidos (0)" />
                         <div id="cart-mobile">
                             <PiReceipt size={32}/>
                             <span>
