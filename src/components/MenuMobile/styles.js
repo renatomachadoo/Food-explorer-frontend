@@ -14,7 +14,12 @@ export const Container = styled.div`
     background: ${ ({ theme}) => theme.COLORS.DARK_400};
     z-index: 1;
 
-    display: ${ ({ menumobileopened }) => menumobileopened === "true" ? "flex" : "none"};
+    display: flex;
+
+    transform: ${ ({ menumobileopened }) => menumobileopened === "true" ? "translateX(0)" : "translateX(-100%)"};
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+
     flex-direction: column;
     gap: 2.25rem;
 
