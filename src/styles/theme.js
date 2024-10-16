@@ -34,7 +34,7 @@ export default {
        
     },
     GRADIENTS: {
-        100: "linear-gradient(to right, rgba(0, 10, 15, 0.27), #000A0F)",
-        200: "linear-gradient(to right, #091E26, #00131C)"
+        GRADIENT_100: "linear-gradient(to right, rgba(0, 10, 15, 0.27), #000A0F)",
+        GRADIENT_200: "linear-gradient(to right, #091E26, #00131C)"
     }
 }

@@ -18,35 +18,37 @@ export function Header(){
 
     return(
         <Container>
-            {
-                !menuMobileOpened ? (
-                    <>
-                        <RxHamburgerMenu onClick={() => setMenuMobileOpened(true)} className="menu-mobile" size={32} /> 
-                        <div className="logo">
-                            <Logo />
-                            <h2>food explorer</h2>
-                        </div>
-                        <Input containerClass="input" icon={CiSearch} placeholder="Busque por pratos ou ingredientes"/>
-                        <Button icon={PiReceipt} text="Pedidos (0)" />
-                        <div id="cart-mobile">
-                            <PiReceipt size={32}/>
-                            <span>
-                                0
+            <div>
+                {
+                    !menuMobileOpened ? (
+                        <>
+                            <RxHamburgerMenu onClick={() => setMenuMobileOpened(true)} className="menu-mobile" size={32} /> 
+                            <div className="logo">
+                                <Logo />
+                                <h2>food explorer</h2>
+                            </div>
+                            <Input containerClass="input" icon={CiSearch} placeholder="Busque por pratos ou ingredientes"/>
+                            <Button icon={PiReceipt} text="Pedidos (0)" />
+                            <div id="cart-mobile">
+                                <PiReceipt size={32}/>
+                                <span>
+                                    0
+                                </span>
+                            </div>
+                            <FiLogOut id="logout" size={32} /> 
+                        </>
+                        
+                    ) : (
+                        <>
+                            <IoCloseOutline onClick={() => setMenuMobileOpened(false)} className="menu-mobile" size={32}/>
+                            <span id="menu-mobile-text">
+                                Menu
                             </span>
-                        </div>
-                        <FiLogOut id="logout" size={32} /> 
-                    </>
-                    
-                ) : (
-                    <>
-                        <IoCloseOutline onClick={() => setMenuMobileOpened(false)} className="menu-mobile" size={32}/>
-                        <span id="menu-mobile-text">
-                            Menu
-                        </span>
-                    </>
-                )
-            }
-            <MenuMobile menuMobileOpened={menuMobileOpened} setMenuMobileOpened={setMenuMobileOpened}/>
+                        </>
+                    )
+                }
+                <MenuMobile menuMobileOpened={menuMobileOpened} setMenuMobileOpened={setMenuMobileOpened}/>
+            </div>
         </Container>
     )
 }
