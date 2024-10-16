@@ -32,6 +32,8 @@ export const Container = styled.div`
 
         border-radius: 0.5rem;
 
+        padding-left: ${ ({ Icon }) => Icon ? "0.875rem" : "" };
+
         input::focus{
             border: 1px solid red;
         }
@@ -46,6 +48,7 @@ export const Container = styled.div`
             color: ${({theme}) => theme.COLORS.LIGHT_100 };
 
             padding: 0.75rem 0.875rem;
+            padding-left: ${ ({ Icon }) => Icon ? "0" : "0.875rem" };
 
             &::placeholder{
                 color: ${({theme}) => theme.COLORS.LIGHT_500 };

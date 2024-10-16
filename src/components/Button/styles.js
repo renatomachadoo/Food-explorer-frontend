@@ -7,6 +7,7 @@ export const Container = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
 
     background: ${ ({ theme }) => theme.COLORS.TOMATO_100};
     border-radius: 0.3125rem;
