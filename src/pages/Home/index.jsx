@@ -2,6 +2,7 @@ import { Container } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { Slider } from "../../components/Slider";
 
 import biscuitsImg from "../../assets/biscuits.svg" 
 
@@ -20,6 +21,10 @@ export function Home(){
                             <small>Sinta o cuidado do preparo com ingredientes selecionados</small>
                         </div>
                     </div>
+                    <Slider />
+                    <Slider />
+                    <Slider />
+                    <Slider />
                 </div>
             </main>
             <Footer />

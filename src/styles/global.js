@@ -12,7 +12,7 @@ export default createGlobalStyle`
     :root{
         font-size: 16px;
 
-        @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+        @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
             font-size: 12px;
         }
     }

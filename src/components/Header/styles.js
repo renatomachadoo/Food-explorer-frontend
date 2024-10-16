@@ -25,7 +25,7 @@ export const Container = styled.header`
 
         padding: 1.75rem 7.75rem;
         
-        @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+        @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
             padding: 3.5rem 1.75rem 1.5rem;
             grid-template-areas: 
             "menu logo button"
@@ -54,7 +54,7 @@ export const Container = styled.header`
 
         .input {
             grid-area: search;
-            @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+            @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
                 display: none;
             }
         }
@@ -63,7 +63,7 @@ export const Container = styled.header`
             padding: 0.75rem 2.90625rem;
             max-width: 13.5rem;
 
-            @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+            @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
                 display: none;
             }
 
@@ -75,7 +75,7 @@ export const Container = styled.header`
         #logout {
             color: ${ ({ theme }) => theme.COLORS.LIGHT_100};
             cursor: pointer;
-            @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+            @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
                 display: none;
             }
         }
@@ -85,7 +85,7 @@ export const Container = styled.header`
             cursor: pointer;
             grid-area: menu;
 
-            @media (min-width: ${DEVICE_BREAKPOINTS.MD}){
+            @media (min-width: ${DEVICE_BREAKPOINTS.LG}){
                 display: none;
             }
         }
@@ -97,7 +97,7 @@ export const Container = styled.header`
 
             position: relative;
 
-            @media (min-width: ${DEVICE_BREAKPOINTS.MD}){
+            @media (min-width: ${DEVICE_BREAKPOINTS.LG}){
                 display: none;
             }
 

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
-    /* height: 100%; */
 
     top: 0;
     bottom: 0;
@@ -12,7 +11,7 @@ export const Container = styled.div`
     position: absolute;
     
     background: ${ ({ theme}) => theme.COLORS.DARK_400};
-    z-index: 1;
+    z-index: 50;
 
     display: flex;
 

@@ -21,7 +21,7 @@ export const Container = styled.div`
 
         grid-area: footer;
 
-        @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+        @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
             padding: 1.75rem 1.5rem;
         }
 

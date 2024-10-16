@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
     width: 100%;
@@ -18,8 +19,6 @@ export const Container = styled.div`
         grid-area: main;
         width: 100%;
 
-        
-
         overflow-y: auto;
 
         .main {
@@ -29,6 +28,14 @@ export const Container = styled.div`
 
             gap: 0.75rem;
             padding: 10.25rem 7.75rem 3rem;
+
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+
+            @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
+                padding: 2.75rem 1.75rem 1.5rem;
+            }
             
             .slogan {
                 width: 100%;
@@ -40,6 +47,10 @@ export const Container = styled.div`
                 grid-template-columns: repeat(2, minmax(0, 1fr));
 
                 border-radius: 0.5rem;
+
+                @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+                    height: 7.5rem;
+                }
 
                 div:nth-child(1){
                     position: relative;
@@ -59,12 +70,19 @@ export const Container = styled.div`
                     align-items: start;
                     justify-content: center;
 
+                    padding-right: 1rem;
+
                     p {
                         font-family: "Poppins", sans-serif;
                         font-weight: 500;
                         font-size: 2.5rem;
                         line-height: 140%;
                         color: ${ ({ theme }) => theme.COLORS.LIGHT_300};
+
+                        @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+                            font-size: 1.125rem;
+                            font-weight: 600;
+                        }
                     }
 
                     small {
@@ -73,6 +91,11 @@ export const Container = styled.div`
                         font-size: 1rem;
                         line-height: 100%;
                         color: ${ ({ theme }) => theme.COLORS.LIGHT_300};
+
+                        @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+                            font-family: "Poppins", sans-serif;
+                            font-size: 0.75rem;
+                        }
                     }
                 }
             }

@@ -5,6 +5,12 @@ export const Container = styled.div`
     text-align: center;
 
     > button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 0.5rem;
+        
         color: ${ ({ theme }) => theme.COLORS.LIGHT_100};
 
         font-family: "Poppins", sans-serif;
