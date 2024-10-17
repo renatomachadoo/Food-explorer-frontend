@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
     width: 100%;
@@ -25,6 +26,10 @@ export const Container = styled.div`
     grid-area: main;
 
     padding: 2.25rem 1.75rem;
+
+    @media (min-width: ${DEVICE_BREAKPOINTS.LG}){
+        display: none;
+    }
 
     > div:nth-child(2) {
         text-align: start;

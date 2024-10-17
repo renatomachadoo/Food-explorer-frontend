@@ -39,6 +39,7 @@ export function Slider(){
         modules={[Navigation, Autoplay]}
         spaceBetween={27}
         slidesPerView={"auto"}
+        centeredSlides={true}
         pagination={{ clickable: true }}
         loop={true}
         navigation={{

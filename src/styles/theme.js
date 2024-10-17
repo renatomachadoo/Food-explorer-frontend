@@ -41,6 +41,6 @@ export default {
     },
     
     LIMITS: {
-        MAX_PAGE_WIDTH: "80rem",
+        MAX_PAGE_WIDTH: "123rem",
     }
 }
