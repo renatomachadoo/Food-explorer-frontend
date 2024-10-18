@@ -57,7 +57,7 @@ export function Slider(){
         <SwiperSlide className='slide'>
           <img src={salad} alt="salad" />
           <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de salada</small>
+          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
           <p className='price'>24.99$</p>
           <div className='add-cart'>
             <Count />

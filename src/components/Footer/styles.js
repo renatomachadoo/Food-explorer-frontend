@@ -6,7 +6,7 @@ export const Container = styled.div`
     background: ${ ({ theme}) => theme.COLORS.DARK_600};
 
     > div {
-        height: 4.8125rem;
+        min-height: 4.8125rem;
         width: 100%;
         max-width: ${({ theme}) => theme.LIMITS.MAX_PAGE_WIDTH};
 

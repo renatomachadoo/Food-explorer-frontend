@@ -3,7 +3,7 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   width: 100%;
-
+  max-width: 100%;
   > h3 {
     font-size: 2rem;
     line-height: 140%;
@@ -17,6 +17,8 @@ export const Container = styled.div`
   .slide{
     width: 19rem;
     height: auto;
+
+    word-wrap: break-word;
 
     position: relative;
 

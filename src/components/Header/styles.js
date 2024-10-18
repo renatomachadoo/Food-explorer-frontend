@@ -8,6 +8,8 @@ export const Container = styled.header`
 
     grid-area: header;
 
+    z-index: 5;
+
     > div {
         width: 100%;
         max-width: ${({ theme}) => theme.LIMITS.MAX_PAGE_WIDTH};

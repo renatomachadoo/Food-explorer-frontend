@@ -5,13 +5,13 @@ import GlobalStyles from "./styles/global"
 
 import theme from './styles/theme'
 
-import { Details } from './pages/Details'
+import { NewDish } from './pages/NewDish'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Details />
+      <NewDish />
     </ThemeProvider>
   </StrictMode>,
 )

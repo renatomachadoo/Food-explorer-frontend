@@ -2,12 +2,10 @@ import { Container } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { ButtonText } from "../../components/ButtonText";
 import { Ingredients } from "../../components/Ingredients";
 import { Count } from "../../components/Count";
 import { Button } from "../../components/Button";
-
-import { IoIosArrowBack } from "react-icons/io";
+import { BackButton } from "../../components/BackButton";
 
 import salad from "../../assets/salad.svg"
 
@@ -16,9 +14,7 @@ export function Details(){
         <Container>
             <Header />
             <main>
-                <div className="back-div">
-                    <ButtonText className="back" icon={IoIosArrowBack} text="voltar" />
-                </div>
+                <BackButton />
                 <div className="content">
                     <div className="image">
                         <img src={salad} alt="Dish Image" />

@@ -15,6 +15,8 @@ export const Container = styled.div`
         "footer"
     ;
 
+    overflow-y: auto;
+
     > main {
         grid-area: main;
         width: 100%;
@@ -28,31 +30,21 @@ export const Container = styled.div`
         align-content: start;
         flex-wrap: wrap;
 
-        .back-div{
-            width: 100%;
-            height: fit-content;
-
-            .back{
-                font-size: 1.5rem;
-                font-weight: 700;
-                line-height: 140%;
-                font-family: "Poppins", sans-serif;
-
-                margin-bottom: 2.625rem;
-                color: ${ ({ theme }) => theme.COLORS.LIGHT_300 };
-
-                svg {
-                    color: ${ ({ theme }) => theme.COLORS.LIGHT_100 };
-                }
-            }
+        @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+            padding: 1rem 3.5rem 2rem;
         }
-        
 
         .content {
             width: 100%;
             display: flex;
             gap: 3rem;
             align-items: start;
+
+            @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
 
             .image img{
                 width: 24.375rem;
@@ -89,6 +81,10 @@ export const Container = styled.div`
                     gap: 0.75rem;
 
                     margin-bottom: 1.5rem;
+
+                    @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+                        justify-content: center;
+                    }
                 }
 
                 .buttons {
@@ -98,6 +94,10 @@ export const Container = styled.div`
                     > button {
                         width: fit-content;
                         padding: 0.75rem 1.5rem;
+                    }
+
+                    @media (max-width: ${DEVICE_BREAKPOINTS.MD}){
+                        justify-content: center;
                     }
                 }
             }

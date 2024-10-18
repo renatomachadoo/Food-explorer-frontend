@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
-    width: 100%;
+    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
 
     position: relative;
@@ -15,18 +16,19 @@ export const Container = styled.div`
         "footer"
     ;
 
+    overflow-y: auto;
+    overflow-x: hidden;
+
     main{
         grid-area: main;
         width: 100%;
-
-        overflow-y: auto;
+        max-width: 100vw;
 
         .main {
             margin: 0 auto;
-            width: 100%;
+            /* width: 100%; */
             max-width: ${( {theme}) => theme.LIMITS.MAX_PAGE_WIDTH};
 
-            gap: 0.75rem;
             padding: 10.25rem 7.75rem 3rem;
 
             display: flex;
