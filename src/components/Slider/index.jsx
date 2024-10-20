@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 import { Container } from './styles';
@@ -18,6 +19,7 @@ import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 import salad from "../../assets/salad.svg"
 
 export function Slider(){
+  const navigate = useNavigate()
   const [itemCount, setItemCount] = useState(0)
 
   function incrementItemCount(){
@@ -39,7 +41,7 @@ export function Slider(){
         modules={[Navigation, Autoplay]}
         spaceBetween={27}
         slidesPerView={"auto"}
-        centeredSlides={true}
+        // centeredSlides={true}
         pagination={{ clickable: true }}
         loop={true}
         navigation={{
@@ -54,7 +56,7 @@ export function Slider(){
         <ButtonText className="swiper-button-prev-slide" icon={IoIosArrowBack} />
         <ButtonText className="swiper-button-next-slide" icon={IoIosArrowForward} />
 
-        <SwiperSlide className='slide'>
+        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
           <img src={salad} alt="salad" />
           <p className='title'>Salada</p>
           <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
@@ -68,10 +70,10 @@ export function Slider(){
           </div>
         </SwiperSlide>
         
-        <SwiperSlide className='slide'>
+        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
           <img src={salad} alt="salad" />
           <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de salada</small>
+          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
           <p className='price'>24.99$</p>
           <div className='add-cart'>
             <Count />
@@ -82,10 +84,10 @@ export function Slider(){
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className='slide'>
+        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
           <img src={salad} alt="salad" />
           <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de salada</small>
+          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
           <p className='price'>24.99$</p>
           <div className='add-cart'>
             <Count />
@@ -96,10 +98,10 @@ export function Slider(){
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className='slide'>
+        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
           <img src={salad} alt="salad" />
           <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de salada</small>
+          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
           <p className='price'>24.99$</p>
           <div className='add-cart'>
             <Count />
@@ -110,10 +112,10 @@ export function Slider(){
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className='slide'>
+        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
           <img src={salad} alt="salad" />
           <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de salada</small>
+          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
           <p className='price'>24.99$</p>
           <div className='add-cart'>
             <Count />

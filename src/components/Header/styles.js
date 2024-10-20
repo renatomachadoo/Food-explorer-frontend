@@ -42,6 +42,8 @@ export const Container = styled.header`
             justify-content: center;
             gap: 0.625rem;
 
+            cursor: pointer;
+
             svg {
                 height: 1.875rem;
                 width: 1.875rem;

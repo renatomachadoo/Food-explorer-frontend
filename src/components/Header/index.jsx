@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import { Container } from "./styles";
@@ -14,6 +15,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 
 export function Header(){
+    const navigate = useNavigate()
     const [menuMobileOpened, setMenuMobileOpened] = useState(false)
 
     return(
@@ -23,7 +25,7 @@ export function Header(){
                     !menuMobileOpened ? (
                         <>
                             <RxHamburgerMenu onClick={() => setMenuMobileOpened(true)} className="menu-mobile" size={32} /> 
-                            <div className="logo">
+                            <div onClick={() => navigate("/")} className="logo">
                                 <Logo />
                                 <h2>food explorer</h2>
                             </div>

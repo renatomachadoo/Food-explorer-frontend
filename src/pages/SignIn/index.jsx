@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+
 import { Container, Form } from "./styles"
 import Logo from "../../assets/logo.svg"
 
@@ -6,6 +8,8 @@ import { Button } from "../../components/Button"
 import { ButtonText } from "../../components/ButtonText"
 
 export function SignIn(){
+    const navigate = useNavigate()
+
     return (
         <Container>
             <main>
@@ -18,7 +22,7 @@ export function SignIn(){
                     <Input label="Email" id="email" placeholder="Exemplo: exemplo@exemplo.com.br"/>
                     <Input label="Senha" id="password" placeholder="No mínimo 6 caracteres" type="password"/>
                     <Button text="Entrar" />
-                    <ButtonText text="Criar uma conta" />
+                    <ButtonText text="Criar uma conta" onClick={() => navigate("/register")}/>
                 </Form>
             </main>
         </Container>
