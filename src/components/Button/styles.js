@@ -9,7 +9,7 @@ export const Container = styled.button`
     justify-content: center;
     gap: 0.5rem;
 
-    background: ${ ({ theme, disabled}) => disabled == "true" ? theme.COLORS.TOMATO_400 : theme.COLORS.TOMATO_100};
+    background: ${ ({ theme, disabled, secondary}) => disabled == "true" ? theme.COLORS.TOMATO_400 : secondary == "true" ? theme.COLORS.DARK_800 : theme.COLORS.TOMATO_100};
     border-radius: 0.3125rem;
     padding: 0.75rem;
 
@@ -17,7 +17,7 @@ export const Container = styled.button`
     font-weight: 500;
     font-size: 0.875rem;
     line-height: 1.5rem;
-    color: ${ ({ theme, disabled}) => theme.COLORS.LIGHT_100};
+    color: ${ ({ theme }) => theme.COLORS.LIGHT_100};
 
     border: none;
 

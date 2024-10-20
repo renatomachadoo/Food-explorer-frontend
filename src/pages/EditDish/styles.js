@@ -74,10 +74,13 @@ export const Container = styled.div`
                 width: 100%;
                 display: flex;
                 justify-content: end;
+                
+                gap: 2rem;
+
                 > button {
                     width: fit-content;
                     @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
-                        width: 100%;
+                        width: 50%;
                     }
                 }
             }
