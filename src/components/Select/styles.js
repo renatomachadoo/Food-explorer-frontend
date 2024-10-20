@@ -17,12 +17,12 @@ export const Container = styled.div`
 
     > div {
         width: 100%;
-        height: 10.75rem;
+        height: 3rem;
 
         background: ${ ({ theme }) => theme.COLORS.DARK_900};
 
         display: flex;
-        align-items: start;
+        align-items: center;
         gap: 0.875rem;
 
         border-radius: 0.5rem;
@@ -32,30 +32,39 @@ export const Container = styled.div`
 
         border-radius: 0.5rem;
 
-        padding-left: ${ ({ Icon }) => Icon ? "0.875rem" : "" };
+        position: relative;
 
-        > textarea {
+        > select {
             background: transparent;
             border: none;
             width: 100%;
             height: 100%;
 
+            -webkit-appearance: none;
+
             font-family: "Roboto", sans-serif;
             font-size: 1rem;
-            color: ${({theme}) => theme.COLORS.LIGHT_100 };
+            color: ${({theme}) => theme.COLORS.LIGHT_500 };
 
             padding: 0.75rem 0.875rem;
-            padding-left: ${ ({ Icon }) => Icon ? "0" : "0.875rem" };
 
-            resize: none;
+            cursor: pointer;
 
-            &::placeholder{
-                color: ${({theme}) => theme.COLORS.LIGHT_500 };
+            option {
+                color: ${({theme}) => theme.COLORS.DARK_1000 };
             }
+        }
+
+        svg {
+            position: absolute;
+            right: 1rem;
+            top: 0.5;
+            bottom: 0.5;
+            color: ${({theme}) => theme.COLORS.LIGHT_400 };
         }
     }
 
-    div:has(textarea:focus) {
+    div:has(select:focus) {
         outline: 1px solid ${ ({ theme}) => theme.COLORS.LIGHT_100};
         border-radius: 0.3125rem;
         background: ${ ({ theme}) => theme.COLORS.DARK_700};

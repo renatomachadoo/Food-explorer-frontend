@@ -6,23 +6,22 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 0.5rem;
 
-    > label {
+    > p {
         font-family: "Roboto", sans-serif;
         font-size: 1rem;
         line-height: 100%;
         font-weight: 400;
         color: ${ ({ theme }) => theme.COLORS.LIGHT_400};
-        cursor: pointer;
     }
 
     > div {
         width: 100%;
-        height: 10.75rem;
+        height: 3rem;
 
         background: ${ ({ theme }) => theme.COLORS.DARK_900};
 
         display: flex;
-        align-items: start;
+        align-items: center;
         gap: 0.875rem;
 
         border-radius: 0.5rem;
@@ -32,30 +31,29 @@ export const Container = styled.div`
 
         border-radius: 0.5rem;
 
-        padding-left: ${ ({ Icon }) => Icon ? "0.875rem" : "" };
-
-        > textarea {
-            background: transparent;
-            border: none;
+        label {
             width: 100%;
-            height: 100%;
-
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: "Roboto", sans-serif;
             font-size: 1rem;
-            color: ${({theme}) => theme.COLORS.LIGHT_100 };
-
+            line-height: 100%;
+            font-weight: 400;
+            color: ${ ({ theme }) => theme.COLORS.LIGHT_100};
+            cursor: pointer;
             padding: 0.75rem 0.875rem;
-            padding-left: ${ ({ Icon }) => Icon ? "0" : "0.875rem" };
+            gap: 0.875rem;
+        }
 
-            resize: none;
-
-            &::placeholder{
-                color: ${({theme}) => theme.COLORS.LIGHT_500 };
-            }
+        > input {
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
         }
     }
 
-    div:has(textarea:focus) {
+    div:has(input:focus) {
         outline: 1px solid ${ ({ theme}) => theme.COLORS.LIGHT_100};
         border-radius: 0.3125rem;
         background: ${ ({ theme}) => theme.COLORS.DARK_700};

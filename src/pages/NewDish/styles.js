@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
     width: 100%;
@@ -25,6 +26,10 @@ export const Container = styled.div`
 
         max-width: ${( {theme}) => theme.LIMITS.MAX_PAGE_WIDTH};
 
+        @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
+            padding: 1.5rem;
+        }
+
         .add-dish {
             width: 100%;
 
@@ -45,12 +50,23 @@ export const Container = styled.div`
                 display: flex;
                 gap: 2rem;
 
+                @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
+                    display: flex;
+                    flex-direction: column;
+                }
+
                 .small-input{
                     max-width: 14.3125rem;
+                    @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
+                        max-width: 100%;
+                    }
                 }
 
                 .medium-input{
                     max-width: 22.75rem;
+                    @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
+                        max-width: 100%;
+                    }
                 }
             }
 
@@ -62,8 +78,6 @@ export const Container = styled.div`
                     width: fit-content;
                 }
             }
-
-            
         }
     }
 `

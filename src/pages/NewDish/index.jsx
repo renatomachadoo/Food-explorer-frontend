@@ -7,6 +7,11 @@ import { BackButton } from "../../components/BackButton";
 import { Input } from "../../components/Input";
 import { TextArea } from "../../components/TextArea";
 import { Button } from "../../components/Button";
+import { InputFile } from "../../components/InputFile";
+import { Select } from "../../components/Select";
+import { Ingredients } from "../../components/Ingredients";
+
+import { FiUpload } from "react-icons/fi";
 
 export function NewDish(){
     return (
@@ -17,13 +22,13 @@ export function NewDish(){
                 <div className="add-dish">
                     <h1>Adicionar prato</h1>
                     <div className="input-section">
-                        <Input containerClass="small-input" label="Imagem do prato" id="image" placeholder="Selecione imagem" type="file" />
+                        <InputFile icon={FiUpload} description="Imagem do prato" containerClass="small-input" label="Imagem do prato" id="image"/>
                         <Input label="Nome" id="name" placeholder="Ex.: Salada Ceasar" />
-                        <Input containerClass="medium-input" label="Categoria" id="category" placeholder="Refeição" />
+                        <Select containerClass="medium-input" label="Categoria" id="category" placeholder="Refeição" />
                     </div>
 
                     <div className="input-section">
-                        <Input label="Imagem do prato" id="image" placeholder="Selecione imagem" type="file" />
+                        <Ingredients description="Ingredientes" ingredients={["asd", "asd"]} />
                         <Input containerClass="small-input" label="Preço" id="price" placeholder="R$ 00,00" />
                     </div>
 

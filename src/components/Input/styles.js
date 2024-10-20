@@ -34,10 +34,6 @@ export const Container = styled.div`
 
         padding-left: ${ ({ Icon }) => Icon ? "0.875rem" : "" };
 
-        input::focus{
-            border: 1px solid red;
-        }
-
         > input {
             background: transparent;
             border: none;

@@ -2,10 +2,11 @@ import { Container } from "./styles";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
-import { Ingredients } from "../../components/Ingredients";
+import { Ingredient } from "../../components/Ingredient";
 import { Count } from "../../components/Count";
 import { Button } from "../../components/Button";
 import { BackButton } from "../../components/BackButton";
+
 
 import salad from "../../assets/salad.svg"
 
@@ -25,12 +26,12 @@ export function Details(){
                             Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.
                         </p>
                         <div className="ingredients">
-                            <Ingredients ingredient="alface" />
-                            <Ingredients ingredient="cebola" />
-                            <Ingredients ingredient="pão naan" />
-                            <Ingredients ingredient="pepino" />
-                            <Ingredients ingredient="rabanete" />
-                            <Ingredients ingredient="tomate" />
+                            <Ingredient ingredient="alface" />
+                            <Ingredient ingredient="cebola" />
+                            <Ingredient ingredient="pão naan" />
+                            <Ingredient ingredient="pepino" />
+                            <Ingredient ingredient="rabanete" />
+                            <Ingredient ingredient="tomate" />
                         </div>
                         <div className="buttons">
                             <Count />
