@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Container } from "./styles";
-import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 
 import { Header } from "../../components/Header";
@@ -24,7 +23,6 @@ export function Home(){
         }
         getData()
     }, [search])
-
 
     return (
         <Container>
