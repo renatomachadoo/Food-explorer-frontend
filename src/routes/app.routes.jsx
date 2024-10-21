@@ -11,7 +11,7 @@ export function AppRoutes(){
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/new" element={<NewDish/>} />
-      <Route path="/edit" element={<EditDish/>} />
+      <Route path="/edit/:dish_id" element={<EditDish/>} />
       <Route path="/details/:dish_id" element={<Details/>} />
 
       <Route path="*" element={<Navigate to="/" />} />

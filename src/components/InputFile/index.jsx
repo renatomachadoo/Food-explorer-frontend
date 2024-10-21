@@ -11,7 +11,7 @@ export function InputFile({icon : Icon, label, id, placeholder, icon, containerC
                     }
                     {label}
                 </label>}
-                <input id={id} type="file" placeholder={placeholder} {...rest}/>
+                <input id={id} name={id} type="file" placeholder={placeholder} {...rest}/>
             </div>
         </Container>
     )

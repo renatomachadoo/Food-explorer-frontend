@@ -17,7 +17,7 @@ import { IoCloseOutline } from "react-icons/io5";
 
 export function Header({ search, setSearch }){
     const navigate = useNavigate()
-    const { signOut } = useAuth()
+    const { user, signOut } = useAuth()
 
     const [menuMobileOpened, setMenuMobileOpened] = useState(false)
 
@@ -37,17 +37,33 @@ export function Header({ search, setSearch }){
                         <>
                             <RxHamburgerMenu onClick={() => setMenuMobileOpened(true)} className="menu-mobile" size={32} /> 
                             <div onClick={() => navigate("/")} className="logo">
-                                <Logo />
-                                <h2>food explorer</h2>
+                                <div className="logo-upper">
+                                    <Logo />
+                                    <h2>food explorer</h2>
+                                </div>
+                                {
+                                    user?.role === "admin" && <p>admin</p>
+                                }
                             </div>
                             <Input containerClass="input" value={search} onChange={(e) => setSearch(e.target.value)} icon={CiSearch} placeholder="Busque por pratos ou ingredientes"/>
-                            <Button icon={PiReceipt} text="Pedidos (0)" />
-                            <div id="cart-mobile">
-                                <PiReceipt size={32}/>
-                                <span>
-                                    0
-                                </span>
-                            </div>
+                            {
+                                user?.role === "admin" ?
+                                    <Button text="Novo prato" onClick={() => navigate("/new")} />
+                                :
+                                    <Button icon={PiReceipt} text="Pedidos (0)" />
+                            }
+                            
+                            {
+                                user?.role !== "admin" && (
+                                    <div id="cart-mobile">
+                                        <PiReceipt size={32}/>
+                                        <span>
+                                            0
+                                        </span>
+                                    </div>
+                                )
+                            }
+                            
                             <FiLogOut id="logout" onClick={handleSignOut} size={32} /> 
                         </>
                         

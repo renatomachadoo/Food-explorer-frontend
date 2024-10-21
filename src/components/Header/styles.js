@@ -38,11 +38,25 @@ export const Container = styled.header`
             grid-area: logo;
 
             display: flex;
-            align-items: center;
+            align-items: end;
             justify-content: center;
-            gap: 0.625rem;
+            flex-direction: column;
 
             cursor: pointer;
+
+            @media (max-width: ${DEVICE_BREAKPOINTS.LG}){
+                flex-direction: row;
+                justify-items: end;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .logo-upper{
+                display: flex;
+                gap: 0.625rem;
+                align-items: center;
+                justify-content: center;
+            }
 
             svg {
                 height: 1.875rem;
@@ -53,6 +67,13 @@ export const Container = styled.header`
                 font-family: "Roboto", sans-serif;
                 font-size: 1.5rem;
                 font-weight: bold;
+            }
+
+            p{
+                font-family: "Roboto", sans-serif;
+                font-size: 0.75rem;
+                line-height: 160%;
+                color: ${ ({ theme }) => theme.COLORS.CAKE_200};
             }
         }
 

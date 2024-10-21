@@ -1,3 +1,4 @@
+import { useAuth } from '../../hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -15,6 +16,7 @@ import { ButtonText } from '../ButtonText';
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
+import { TbPencil } from "react-icons/tb";
 
 import dishImage from "../../assets/dish.jpg"
 
@@ -22,6 +24,7 @@ import { api } from '../../services/api';
 
 export function Slider({ category, dishes, getDishes}){
   const navigate = useNavigate()
+  const { user } = useAuth()
   const [dishItemCount, setDishItemCount] = useState({})
 
   async function addItemToFavorites(dishId){
@@ -58,10 +61,10 @@ export function Slider({ category, dishes, getDishes}){
 
   function addItemToCart(dishId){
     alert("Item adicionado ao carrinho.")
-    setDishItemCount(prevState => ({
-      ...prevState,
-      [dishId]: 1
-  }));
+      setDishItemCount(prevState => ({
+        ...prevState,
+        [dishId]: 1
+    }));
   }
 
   return (
@@ -94,13 +97,18 @@ export function Slider({ category, dishes, getDishes}){
               <p className='title' onClick={() => navigate(`/details/${dish.id}`)}>{dish.name}</p>
               <small className='description'>{dish.description}</small>
               <p className='price'>R$ {dish.price}</p>
-              <div className='add-cart'>
-                <Count onPlusClick={() => incrementItemCount(dish.id)} count={dishItemCount[dish.id]} onMinusClick={() => decrementItemCount(dish.id)} />
-                <Button className="button-add-cart" text="incluir" onClick={() => addItemToCart(dish.id)} />
-              </div>
+              {user?.role !== "admin" && <div className='add-cart'>
+                  <Count onPlusClick={() => incrementItemCount(dish.id)} count={dishItemCount[dish.id]} onMinusClick={() => decrementItemCount(dish.id)} />
+                  <Button className="button-add-cart" text="incluir" onClick={() => addItemToCart(dish.id)} />
+                </div>
+              }
+              
               <div className="favorite">
                 {
-                  dish.isFavorite ? <ButtonText icon={IoHeartSharp} onClick={() => removeItemFromFavorites(dish.id)} /> : <ButtonText icon={IoHeartOutline} onClick={() => addItemToFavorites(dish.id)} />
+                  user?.role === "admin" ? 
+                    <ButtonText icon={TbPencil} onClick={() => navigate(`/edit/${dish.id}`)} /> : dish.isFavorite ? <ButtonText icon={IoHeartSharp} onClick={() => removeItemFromFavorites(dish.id)} /> 
+                    : 
+                    <ButtonText icon={IoHeartOutline} onClick={() => addItemToFavorites(dish.id)} />
                 }
               </div>
             </SwiperSlide>
