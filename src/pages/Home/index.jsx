@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
 import { Container } from "./styles";
+import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
@@ -7,9 +10,25 @@ import { Slider } from "../../components/Slider";
 import biscuitsImg from "../../assets/biscuits.svg" 
 
 export function Home(){
+    const [search, setSearch] = useState("")
+    const [dishesByCategory, setDishesByCategory] = useState([])
+
+    async function getDishes(){
+        const response = await api.get(`/dishes_category?search=${search}`)
+        setDishesByCategory(response.data)
+    }
+
+    useEffect(() => {
+        async function getData(){
+            await getDishes()
+        }
+        getData()
+    }, [search])
+
+
     return (
         <Container>
-            <Header />
+            <Header search={search} setSearch={setSearch} />
             <main>
                 <div className="main">
                     <div className="slogan">
@@ -21,10 +40,11 @@ export function Home(){
                             <small>Sinta o cuidado do preparo com ingredientes selecionados</small>
                         </div>
                     </div>
-                    <Slider />
-                    <Slider />
-                    <Slider />
-                    <Slider />
+                    {
+                        dishesByCategory.map(( dishCategory, index ) => {
+                            return <Slider key={index} category={dishCategory.category} dishes={dishCategory.dishes} getDishes={getDishes} />
+                        })
+                    }
                 </div>
             </main>
             <Footer />

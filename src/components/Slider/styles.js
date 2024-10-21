@@ -37,6 +37,8 @@ export const Container = styled.div`
     img{
       width: 11rem;
       height: 11rem;
+
+      border-radius: 50%;
     }
 
     .title {
@@ -47,6 +49,8 @@ export const Container = styled.div`
       font-weight: bold;
       font-size: 1.5rem;
       line-height: 140%;
+
+      cursor: pointer;
 
       color: ${ ({ theme }) => theme.COLORS.LIGHT_300};
     }

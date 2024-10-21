@@ -16,33 +16,64 @@ import { ButtonText } from '../ButtonText';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
 
-import salad from "../../assets/salad.svg"
+import dishImage from "../../assets/dish.jpg"
 
-export function Slider(){
+import { api } from '../../services/api';
+
+export function Slider({ category, dishes, getDishes}){
   const navigate = useNavigate()
-  const [itemCount, setItemCount] = useState(0)
+  const [dishItemCount, setDishItemCount] = useState({})
 
-  function incrementItemCount(){
-    setItemCount(prevState => prevState + 1)
+  async function addItemToFavorites(dishId){
+    try {
+        await api.post("/favorite_dishes", {
+            dishId
+        })
+        await getDishes()
+    } catch (error) {}
   }
 
-  function decrementItemCount(){
-    if(itemCount > 0){
-      setItemCount(prevState => prevState + 1)
+  async function removeItemFromFavorites(dishId){
+      try {
+          await api.delete(`/favorite_dishes/${dishId}`)
+          await getDishes()
+      } catch (error) {}
+  }
+
+  function incrementItemCount(dishId) {
+    setDishItemCount(prevState => ({
+        ...prevState,
+        [dishId]: prevState[dishId] ? prevState[dishId] + 1 : 2
+    }));
+  }
+
+  function decrementItemCount(dishId) {
+    if(dishItemCount[dishId] > 1){
+      setDishItemCount(prevState => ({
+        ...prevState,
+        [dishId]: prevState[dishId] - 1
+      }));
     }
+  }
+
+  function addItemToCart(dishId){
+    alert("Item adicionado ao carrinho.")
+    setDishItemCount(prevState => ({
+      ...prevState,
+      [dishId]: 1
+  }));
   }
 
   return (
     <Container>
       <h3>
-        Sobremesas
+        {category}
       </h3>
       <Swiper
         modules={[Navigation, Autoplay]}
         spaceBetween={27}
         slidesPerView={"auto"}
-        // centeredSlides={true}
-        pagination={{ clickable: true }}
+        centeredSlides={true}
         loop={true}
         navigation={{
           prevEl: ".swiper-button-prev-slide",
@@ -56,76 +87,25 @@ export function Slider(){
         <ButtonText className="swiper-button-prev-slide" icon={IoIosArrowBack} />
         <ButtonText className="swiper-button-next-slide" icon={IoIosArrowForward} />
 
-        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
-          <img src={salad} alt="salad" />
-          <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
-          <p className='price'>24.99$</p>
-          <div className='add-cart'>
-            <Count />
-            <Button className="button-add-cart" text="incluir" />
-          </div>
-          <div className="favorite">
-            <ButtonText icon={IoHeartOutline} />
-          </div>
-        </SwiperSlide>
-        
-        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
-          <img src={salad} alt="salad" />
-          <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
-          <p className='price'>24.99$</p>
-          <div className='add-cart'>
-            <Count />
-            <Button className="button-add-cart" text="incluir" />
-          </div>
-          <div className="favorite">
-            <ButtonText icon={IoHeartOutline} />
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
-          <img src={salad} alt="salad" />
-          <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
-          <p className='price'>24.99$</p>
-          <div className='add-cart'>
-            <Count />
-            <Button className="button-add-cart" text="incluir" />
-          </div>
-          <div className="favorite">
-            <ButtonText icon={IoHeartOutline} />
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
-          <img src={salad} alt="salad" />
-          <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
-          <p className='price'>24.99$</p>
-          <div className='add-cart'>
-            <Count />
-            <Button className="button-add-cart" text="incluir" />
-          </div>
-          <div className="favorite">
-            <ButtonText icon={IoHeartOutline} />
-          </div>
-        </SwiperSlide>
-
-        <SwiperSlide className='slide' onClick={() => navigate("/details")}>
-          <img src={salad} alt="salad" />
-          <p className='title'>Salada</p>
-          <small className='description'>Gosto muito de sdoaskjdkasjdkjaskdjaskljdklajskldjaklsdjklajskldjaklsjdklasjdkljaskldjklasjdkljaklsdjklajalada</small>
-          <p className='price'>24.99$</p>
-          <div className='add-cart'>
-            <Count />
-            <Button className="button-add-cart" text="incluir" />
-          </div>
-          <div className="favorite">
-            <ButtonText icon={IoHeartOutline} />
-          </div>
-        </SwiperSlide>
-        
+        {
+          dishes.map((dish, index) => {
+            return <SwiperSlide key={index} className='slide'>
+              <img src={dish.image ? `${api.defaults.baseURL}/files/${dish.image}` : dishImage} alt={dish.name} />
+              <p className='title' onClick={() => navigate(`/details/${dish.id}`)}>{dish.name}</p>
+              <small className='description'>{dish.description}</small>
+              <p className='price'>R$ {dish.price}</p>
+              <div className='add-cart'>
+                <Count onPlusClick={() => incrementItemCount(dish.id)} count={dishItemCount[dish.id]} onMinusClick={() => decrementItemCount(dish.id)} />
+                <Button className="button-add-cart" text="incluir" onClick={() => addItemToCart(dish.id)} />
+              </div>
+              <div className="favorite">
+                {
+                  dish.isFavorite ? <ButtonText icon={IoHeartSharp} onClick={() => removeItemFromFavorites(dish.id)} /> : <ButtonText icon={IoHeartOutline} onClick={() => addItemToFavorites(dish.id)} />
+                }
+              </div>
+            </SwiperSlide>
+          })
+        }
       </Swiper>
     </Container>
   );

@@ -43,6 +43,10 @@ export const Container = styled.div`
             }
         }
 
+        #logo{
+            cursor: pointer;
+        }
+
         small {
             font-size: 0.875rem;
             font-weight: 400;

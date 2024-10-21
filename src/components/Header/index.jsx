@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
 
 import { Container } from "./styles";
 
@@ -14,9 +15,19 @@ import { FiLogOut } from "react-icons/fi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 
-export function Header(){
+export function Header({ search, setSearch }){
     const navigate = useNavigate()
+    const { signOut } = useAuth()
+
     const [menuMobileOpened, setMenuMobileOpened] = useState(false)
+
+    function handleSignOut(){
+        const confirm = window.confirm("Deseja terminar sessão?")
+
+        if(confirm){
+            signOut()
+        }
+    }
 
     return(
         <Container>
@@ -29,7 +40,7 @@ export function Header(){
                                 <Logo />
                                 <h2>food explorer</h2>
                             </div>
-                            <Input containerClass="input" icon={CiSearch} placeholder="Busque por pratos ou ingredientes"/>
+                            <Input containerClass="input" value={search} onChange={(e) => setSearch(e.target.value)} icon={CiSearch} placeholder="Busque por pratos ou ingredientes"/>
                             <Button icon={PiReceipt} text="Pedidos (0)" />
                             <div id="cart-mobile">
                                 <PiReceipt size={32}/>
@@ -37,7 +48,7 @@ export function Header(){
                                     0
                                 </span>
                             </div>
-                            <FiLogOut id="logout" size={32} /> 
+                            <FiLogOut id="logout" onClick={handleSignOut} size={32} /> 
                         </>
                         
                     ) : (
@@ -49,7 +60,7 @@ export function Header(){
                         </>
                     )
                 }
-                <MenuMobile menuMobileOpened={menuMobileOpened} setMenuMobileOpened={setMenuMobileOpened}/>
+                <MenuMobile search={search} setSearch={setSearch} menuMobileOpened={menuMobileOpened} setMenuMobileOpened={setMenuMobileOpened}/>
             </div>
         </Container>
     )

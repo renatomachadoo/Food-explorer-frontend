@@ -5,12 +5,14 @@ import { ButtonText } from "../ButtonText";
 import { FiMinus } from "react-icons/fi";
 import { FiPlus } from "react-icons/fi";
 
-export function Count(){
+export function Count({ onPlusClick, onMinusClick, count = 1}){
  return(
   <Container>
-    <ButtonText icon={FiMinus} />
-    0
-    <ButtonText icon={FiPlus} />
+    <ButtonText onClick={onMinusClick} icon={FiMinus} />
+      {
+        count
+      }
+    <ButtonText onClick={onPlusClick} icon={FiPlus} />
   </Container>
  )
 }

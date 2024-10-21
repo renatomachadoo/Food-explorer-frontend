@@ -1,3 +1,6 @@
+
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { Container } from "./styles";
 
 import { Header } from "../../components/Header";
@@ -7,10 +10,33 @@ import { Count } from "../../components/Count";
 import { Button } from "../../components/Button";
 import { BackButton } from "../../components/BackButton";
 
+import dishImage from "../../assets/dish.jpg"
 
-import salad from "../../assets/salad.svg"
+import { api } from "../../services/api";
 
 export function Details(){
+    const { dish_id } = useParams()
+    const [dish, setDish] = useState({})
+    const [itemCount, setItemCount] = useState(1)
+
+    async function getDish(){
+        const response = await api.get(`/dishes/${dish_id}`)
+        setDish(response.data)
+    }
+
+    useEffect(() => {
+        async function getData(){
+            await getDish()
+        }
+
+        getData()
+    })
+
+    function handleAddItemToCart(){
+        alert("Prato adicionado ao carrinho.")
+        setItemCount(1)
+    }
+
     return (
         <Container>
             <Header />
@@ -18,24 +44,23 @@ export function Details(){
                 <BackButton />
                 <div className="content">
                     <div className="image">
-                        <img src={salad} alt="Dish Image" />
+                        <img src={dish?.image ? `${api.defaults.baseURL}/files/${dish.image}` : dishImage} alt={dish?.name} />
                     </div>
                     <div className="data">
-                        <h1>Salada Ravanello</h1>
+                        <h1>{dish?.name}</h1>
                         <p>
-                            Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. O pão naan dá um toque especial.
+                            {dish?.description}
                         </p>
                         <div className="ingredients">
-                            <Ingredient ingredient="alface" />
-                            <Ingredient ingredient="cebola" />
-                            <Ingredient ingredient="pão naan" />
-                            <Ingredient ingredient="pepino" />
-                            <Ingredient ingredient="rabanete" />
-                            <Ingredient ingredient="tomate" />
+                            {
+                                dish?.ingredients?.map(( ingredient, index) => {
+                                    return <Ingredient key={index} ingredient={ingredient.name} />
+                                })
+                            }
                         </div>
                         <div className="buttons">
-                            <Count />
-                            <Button text="incluir ∙ R$ 25,00" />
+                            <Count onMinusClick={() => itemCount > 1 ? setItemCount(prevState => prevState - 1) : null} onPlusClick={() => setItemCount(prevState => prevState + 1)} count={itemCount}/>
+                            <Button onClick={handleAddItemToCart} text={`incluir ∙ R$ ${dish?.price}`} />
                         </div>
                     </div>
                 </div>
