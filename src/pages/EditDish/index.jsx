@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -19,6 +20,7 @@ import { FiUpload } from "react-icons/fi";
 import { api } from "../../services/api";
 
 export function EditDish(){
+    const navigate = useNavigate()
     const { dish_id } = useParams()
 
     const [categories, setCategories] = useState([])
@@ -45,8 +47,39 @@ export function EditDish(){
         }
     }
 
-    async function editDish(){
+    async function deleteDish(){
+        const confirm = window.confirm("Deseja excluir este prato?")
+        if(confirm){
+            await api.delete(`/dishes/${dish_id}`)
+            return navigate("/")
+        }
+    }
 
+    async function editDish(){
+        try {
+            await api.put("/dishes", {
+                name,
+                description,
+                price,
+                category,
+                ingredients,
+                dishId : dish_id
+            })
+
+            if(imageFile){
+                const fileUploadForm = new FormData()
+                fileUploadForm.append("image", imageFile)
+                await api.patch(`/dishes/image/${dish_id}`, fileUploadForm)
+            }
+            
+            alert("Prato atualizado com sucesso")
+            return navigate("/")
+        } catch (error) {
+            if(error.response){
+                return alert(error.response.data.message)
+            }
+            alert("Não foi possivel atualizar o prato.")
+        }
     }
 
     function handleAddNewIngredient(){
@@ -66,32 +99,6 @@ export function EditDish(){
     async function getCategories(){
         const response = await api.get("/categories")
         setCategories(response.data)
-    }
-
-    async function createDish(){
-        try {
-            const response = await api.post("/dishes", {
-                name,
-                description,
-                price,
-                category,
-                ingredients 
-            })
-     
-            const { dish_id } = response.data
-
-            const fileUploadForm = new FormData()
-            fileUploadForm.append("image", imageFile)
-            await api.patch(`/dishes/image/${dish_id}`, fileUploadForm)
-            
-            alert("Prato criado com sucesso")
-            return navigate("/")
-        } catch (error) {
-            if(error.response){
-                return alert(error.response.data.message)
-            }
-            alert("Não foi possivel criar o prato.")
-        }
     }
 
     useEffect(() => {
@@ -125,8 +132,8 @@ export function EditDish(){
                     </div>
 
                     <div className="buttons-section">
-                        <Button text="Excluir prato" secondary/>
-                        <Button disabled={!name || !category || !description || !price || ingredients.length == 0 || !description ? true : false} text="Salvar alterações"/>
+                        <Button onClick={deleteDish} text="Excluir prato" secondary/>
+                        <Button onClick={editDish} disabled={!name || !category || !description || !price || ingredients.length == 0 || !description ? true : false} text="Salvar alterações"/>
                     </div>
                 </div>
             </main>

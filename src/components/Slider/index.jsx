@@ -77,7 +77,7 @@ export function Slider({ category, dishes, getDishes}){
         spaceBetween={27}
         slidesPerView={"auto"}
         centeredSlides={true}
-        loop={true}
+        // loop={true}
         navigation={{
           prevEl: ".swiper-button-prev-slide",
           nextEl: ".swiper-button-next-slide",

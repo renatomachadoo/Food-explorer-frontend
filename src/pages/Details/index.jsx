@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
+
 import { Container } from "./styles";
 
 import { Header } from "../../components/Header";
@@ -15,8 +17,10 @@ import dishImage from "../../assets/dish.jpg"
 import { api } from "../../services/api";
 
 export function Details(){
+    const navigate = useNavigate()
     const { dish_id } = useParams()
     const [dish, setDish] = useState({})
+    const { user } = useAuth()
     const [itemCount, setItemCount] = useState(1)
 
     async function getDish(){
@@ -59,8 +63,17 @@ export function Details(){
                             }
                         </div>
                         <div className="buttons">
-                            <Count onMinusClick={() => itemCount > 1 ? setItemCount(prevState => prevState - 1) : null} onPlusClick={() => setItemCount(prevState => prevState + 1)} count={itemCount}/>
-                            <Button onClick={handleAddItemToCart} text={`incluir ∙ R$ ${dish?.price}`} />
+                            {
+                                user?.role === "admin" ? (
+                                    <Button onClick={() => navigate(`/edit/${dish_id}`)} text="Editar prato" />
+                                ) : (
+                                    <>
+                                        <Count onMinusClick={() => itemCount > 1 ? setItemCount(prevState => prevState - 1) : null} onPlusClick={() => setItemCount(prevState => prevState + 1)} count={itemCount}/>
+                                        <Button onClick={handleAddItemToCart} text={`incluir ∙ R$ ${dish?.price}`} />
+                                    </>
+                                )
+                            }
+                            
                         </div>
                     </div>
                 </div>
